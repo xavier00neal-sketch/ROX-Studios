@@ -1,0 +1,363 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Rox Studios</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&family=Tilt+Neon&display=swap">
+<style>
+/* Layout: a neon sign on a dark wall in a friendly room. One look on purpose, because neon needs the dark. */
+:root {
+  --wall: #161024;
+  --wall-up: #211837;
+  --text: #f3edf9;
+  --muted: #c3b8d6;
+  --off: #463a60;
+  --sun: #ffd84d;
+  --sun-core: #fff4c7;
+  --pink: #ff4fa0;
+  --pink-core: #ffdcec;
+  --aqua: #2fe6e0;
+  --aqua-core: #d6fffc;
+  --sign: "Tilt Neon", "Trebuchet MS", sans-serif;
+  --script: "Pacifico", "Brush Script MT", cursive;
+  --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--wall);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+h1, h2, h3, p, ol, ul { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+
+.wrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  display: grid;
+  gap: clamp(4rem, 9vw, 6.5rem);
+  overflow-x: clip;
+}
+
+.neon {
+  color: var(--core);
+  text-shadow:
+    0 0 .03em var(--core),
+    0 0 .1em var(--c),
+    0 0 .28em var(--c),
+    0 0 .7em var(--c);
+}
+.is-sun { --c: var(--sun); --core: var(--sun-core); }
+.is-pink { --c: var(--pink); --core: var(--pink-core); }
+.is-aqua { --c: var(--aqua); --core: var(--aqua-core); }
+
+h2 {
+  font-family: var(--sign);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* The sign */
+.hero { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+.sign { position: relative; isolation: isolate; justify-self: center; text-align: center; min-width: 0; }
+.sign::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(closest-side at 30% 45%, rgba(255, 79, 160, .3), transparent),
+    radial-gradient(closest-side at 72% 55%, rgba(47, 230, 224, .24), transparent);
+  animation: breathe 5s ease-in-out infinite;
+}
+h1 { font-weight: 400; }
+.rox {
+  display: block;
+  font-family: var(--sign);
+  font-size: clamp(7rem, 31vw, 14.5rem);
+  line-height: 1;
+  letter-spacing: .03em;
+}
+.rox span { display: inline-block; animation: switch-on 1.5s linear backwards; }
+.rox .r { animation-delay: .1s; }
+.rox .o { animation-delay: .55s; }
+.rox .x { animation: switch-on 1.5s linear 1s backwards, stutter 9s linear 4s infinite; }
+.studios {
+  display: block;
+  font-family: var(--script);
+  font-size: clamp(2.9rem, 12.5vw, 5.8rem);
+  line-height: 1.2;
+  margin-top: -.3em;
+  transform: rotate(-4deg);
+  animation: switch-on 1.5s linear 1.45s backwards;
+}
+
+.hello { display: grid; gap: 1rem; min-width: 0; }
+.hello h2 { font-size: clamp(2.2rem, 5.4vw, 3.4rem); }
+.hello p { max-width: 44ch; }
+.hello .big { font-size: 1.3rem; font-weight: 600; line-height: 1.45; }
+.hello .note { color: var(--muted); }
+
+/* Our story */
+.story { display: grid; gap: 2.75rem; }
+.story-top { display: grid; gap: 1.5rem; align-items: center; }
+.years { display: flex; align-items: center; gap: 1rem; }
+.years b {
+  font-family: var(--sign);
+  font-weight: 400;
+  font-size: clamp(5.5rem, 15vw, 8.5rem);
+  line-height: 1;
+  animation: hum 4s ease-in-out infinite;
+}
+.years span { font-family: var(--script); font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.25; }
+.story-copy { display: grid; gap: .8rem; min-width: 0; }
+.story-copy p { max-width: 54ch; }
+
+.lights {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  font-size: clamp(.7rem, 1.7vw, .95rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  text-align: center;
+}
+.wire {
+  position: absolute;
+  top: 6px;
+  left: calc(100% / 28);
+  right: calc(100% / 28);
+  height: 3px;
+  background: var(--off);
+  overflow: hidden;
+}
+.wire::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 18%;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--aqua), transparent);
+  animation: comet 7s linear infinite;
+}
+.year { position: relative; display: grid; justify-items: center; gap: .55rem; }
+.bulb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--off);
+  animation: lit 7s linear calc(var(--i) * .25s) infinite;
+}
+.year.first, .year.last { font-weight: 800; }
+.year.first { color: var(--pink-core); }
+.year.last { color: var(--aqua-core); }
+.year.first .bulb { background: var(--pink-core); box-shadow: 0 0 8px var(--pink), 0 0 20px var(--pink); animation: none; }
+.year.last .bulb { background: var(--aqua-core); box-shadow: 0 0 8px var(--aqua), 0 0 20px var(--aqua); animation: none; }
+
+/* What dropshipping is */
+.how { display: grid; gap: 2.25rem; }
+.how-head { display: grid; gap: .8rem; }
+.how-head p { max-width: 60ch; }
+.steps { display: grid; gap: 2rem; }
+.step { position: relative; display: grid; gap: .55rem; min-width: 0; }
+.step svg {
+  width: 72px;
+  height: 72px;
+  fill: none;
+  stroke: var(--core);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px var(--c)) drop-shadow(0 0 10px var(--c));
+  animation: turn 6s linear infinite;
+}
+.step:nth-child(2) svg { animation-delay: 2s; }
+.step:nth-child(3) svg { animation-delay: 4s; }
+.step h3 { font-size: 1.3rem; font-weight: 800; line-height: 1.25; }
+
+/* Good to know */
+.faq { display: grid; gap: 2rem; }
+.cards { display: grid; gap: 1.25rem; }
+.card {
+  display: grid;
+  gap: .5rem;
+  align-content: start;
+  min-width: 0;
+  padding: 1.4rem 1.5rem;
+  background: var(--wall-up);
+  border: 2px solid var(--core);
+  border-radius: 22px;
+  box-shadow: 0 0 6px var(--c), 0 0 22px -4px var(--c), inset 0 0 14px -6px var(--c);
+}
+.card h3 { font-size: 1.15rem; font-weight: 800; line-height: 1.3; }
+.card p { color: var(--muted); }
+
+/* Goodbye */
+.bye { display: grid; gap: 1.1rem; justify-items: center; text-align: center; padding-block: 1rem; }
+.bye b {
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  line-height: 1.35;
+  animation: hum 4s ease-in-out infinite;
+}
+.bye p { color: var(--muted); }
+
+@keyframes switch-on {
+  0%, 12%, 22% { opacity: .2; }
+  8%, 18% { opacity: .85; }
+  32% { opacity: .35; }
+  42%, 100% { opacity: 1; }
+}
+@keyframes stutter {
+  0%, 90%, 92%, 94%, 100% { opacity: 1; }
+  91%, 93% { opacity: .6; }
+}
+@keyframes hum {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .84; }
+}
+@keyframes breathe {
+  0%, 100% { opacity: .7; }
+  50% { opacity: 1; }
+}
+@keyframes lit {
+  0%, 14%, 100% { background: var(--off); box-shadow: none; }
+  3%, 9% { background: var(--sun-core); box-shadow: 0 0 8px var(--sun), 0 0 20px var(--sun); }
+}
+@keyframes comet {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(556%); }
+}
+@keyframes turn {
+  0%, 36%, 100% { opacity: .5; }
+  6%, 30% { opacity: 1; }
+}
+@keyframes march { to { background-position-x: 16px; } }
+
+@media (max-width: 559px) {
+  .year:not(.first):not(.last) { font-size: 0; }
+}
+@media (min-width: 760px) {
+  .steps, .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 33px;
+    left: 88px;
+    right: -1.25rem;
+    height: 6px;
+    background: radial-gradient(circle, var(--aqua) 0 2.5px, transparent 3px) 0 0 / 16px 6px repeat-x;
+    filter: drop-shadow(0 0 4px var(--aqua));
+    animation: march .8s linear infinite;
+  }
+  .story-top { grid-template-columns: auto minmax(0, 1fr); gap: 3.5rem; }
+}
+@media (min-width: 980px) {
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+  .bulb { background: var(--sun-core); box-shadow: 0 0 8px var(--sun); }
+  .wire::after { display: none; }
+}
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <h1 class="sign" aria-label="Rox Studios">
+      <span class="rox" aria-hidden="true"><span class="r neon is-sun">R</span><span class="o neon is-pink">O</span><span class="x neon is-aqua">X</span></span>
+      <span class="studios neon is-sun" aria-hidden="true">Studios</span>
+    </h1>
+    <div class="hello">
+      <h2 class="neon is-pink">Hi, we're Omar and Xavier.</h2>
+      <p class="big">We're two friends who have worked together since 2013, and now we're starting a dropshipping business.</p>
+      <p class="note">There's an O and an X in Rox. That's us. This page tells you who we are and how it all works.</p>
+    </div>
+  </header>
+
+  <section class="story" aria-labelledby="story-heading">
+    <div class="story-top">
+      <p class="years"><b class="neon is-aqua">13</b><span class="neon is-sun">years<br>and counting</span></p>
+      <div class="story-copy">
+        <h2 id="story-heading">Our story</h2>
+        <p>We started working together back in 2013. Thirteen years later, we're still friends and still working side by side. Rox Studios is the next thing we're doing together.</p>
+      </div>
+    </div>
+    <div class="lights" role="img" aria-label="A row of lights, one for each year from 2013 to 2026">
+      <div class="wire"></div>
+      <div class="year first"><span class="bulb"></span>2013</div>
+      <div class="year" style="--i:1"><span class="bulb"></span>'14</div>
+      <div class="year" style="--i:2"><span class="bulb"></span>'15</div>
+      <div class="year" style="--i:3"><span class="bulb"></span>'16</div>
+      <div class="year" style="--i:4"><span class="bulb"></span>'17</div>
+      <div class="year" style="--i:5"><span class="bulb"></span>'18</div>
+      <div class="year" style="--i:6"><span class="bulb"></span>'19</div>
+      <div class="year" style="--i:7"><span class="bulb"></span>'20</div>
+      <div class="year" style="--i:8"><span class="bulb"></span>'21</div>
+      <div class="year" style="--i:9"><span class="bulb"></span>'22</div>
+      <div class="year" style="--i:10"><span class="bulb"></span>'23</div>
+      <div class="year" style="--i:11"><span class="bulb"></span>'24</div>
+      <div class="year" style="--i:12"><span class="bulb"></span>'25</div>
+      <div class="year last"><span class="bulb"></span>2026</div>
+    </div>
+  </section>
+
+  <section class="how" aria-labelledby="how-heading">
+    <div class="how-head">
+      <h2 id="how-heading">So what's dropshipping?</h2>
+      <p>It's a way of selling where we don't keep shelves of stock ourselves. A supplier stores the products and sends them out when someone orders. Here's how that goes.</p>
+    </div>
+    <ol class="steps">
+      <li class="step is-pink">
+        <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M16 26h40l4 36H12z"></path><path d="M26 34V20a10 10 0 0 1 20 0v14"></path></svg>
+        <h3>You place an order</h3>
+        <p>You pick something you like and order it from us.</p>
+      </li>
+      <li class="step is-sun">
+        <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 24 36 12l24 12v26L36 62 12 50z"></path><path d="M12 24l24 12 24-12"></path><path d="M36 36v26"></path></svg>
+        <h3>Our supplier packs it</h3>
+        <p>We pass your order along and the supplier gets it ready.</p>
+      </li>
+      <li class="step is-aqua">
+        <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M10 36 36 12l26 24"></path><path d="M18 30v32h36V30"></path><path d="M30 62V44h12v18"></path></svg>
+        <h3>It comes to you</h3>
+        <p>The supplier ships it straight to your door.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Good to know</h2>
+    <ul class="cards">
+      <li class="card is-pink">
+        <h3>Can I buy something yet?</h3>
+        <p>Not yet. We're still setting things up.</p>
+      </li>
+      <li class="card is-sun">
+        <h3>Who helps if something goes wrong?</h3>
+        <p>We do. Your order is with Rox Studios, so it's on us to help sort it out.</p>
+      </li>
+      <li class="card is-aqua">
+        <h3>Why might a parcel come from somewhere else?</h3>
+        <p>Suppliers ship orders directly, so it may not come from us. That's normal with dropshipping.</p>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="bye">
+    <b class="neon is-pink">See you soon!</b>
+    <p>Omar &amp; Xavier, Rox Studios. Working together since 2013.</p>
+  </footer>
+</main>
+
+</body></html>
